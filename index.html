@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Configuración del documento y metadatos para la adaptabilidad en dispositivos móviles -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promart - Postventa</title>
+    <!-- Enlaces a librerías externas -->
+    <!-- Tailwind CSS para estilos rápidos y responsivos -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Librería de Confeti para el efecto visual -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        /* Variables CSS para los colores de la marca Promart */
+        :root {
+            --promart-orange: #f26522;
+            --promart-light-bg: #f8f8f8;
+        }
+
+        /* Clases utilitarias personalizadas usando las variables */
+        .bg-promart-orange {
+            background-color: var(--promart-orange);
+        }
+
+        .text-promart-orange {
+            color: var(--promart-orange);
+        }
+
+        /* Fuente principal del sitio */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+
+    <!-- Sección de encabezado (Hero) con fondo degradado y texto centrado -->
+    <header
+        class="bg-gradient-to-r from-[#f26522] to-[#ff7a45] text-white p-10 md:p-16 text-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <!-- Logo Promart -->
+            <!-- Se utiliza la ruta local a la imagen del logo -->
+            <img src="img/promart.webp" alt="Promart Homecenter Logo"
+                class="h-20 sm:h-24 mx-auto mb-6 w-auto animate-fade-in">
+            <!-- Título principal -->
+            <h1 class="text-4xl md:text-5xl font-extrabold drop-shadow-lg animate-fade-in">
+                Gracias por confiar en <span class="underline decoration-white/50">Promart</span>
+            </h1>
+            <!-- Subtítulo -->
+            <p class="mt-4 text-lg md:text-xl text-white/90 animate-fade-in">
+                ¡Te acompañamos en el cuidado y armado de tu mueble!
+            </p>
+        </div>
+    </header>
+
+    <!-- Contenedor principal para el contenido de la página -->
+    <main class="max-w-5xl mx-auto px-6 py-12">
+        <!-- Texto descriptivo antes de las tarjetas -->
+        <p class="text-center text-gray-700 text-lg md:text-xl mb-12">
+            Explora nuestras guías para que tu experiencia post-compra sea
+            <span class="text-promart-orange font-semibold">rápida y sencilla</span>.
+        </p>
+
+        <!-- Contenedor de las tarjetas de guías -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <!-- Tarjeta de "Armado de Mueble" -->
+            <a href="#"
+                class="group bg-white rounded-2xl shadow-lg border-2 border-promart-orange overflow-hidden transform hover:-translate-y-2 hover:shadow-2xl transition-all duration-300">
+                <!-- Imagen del mueble para el armado -->
+                <img src="img/furniture_a.webp" alt="Cómo armar tu mueble"
+                    class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                <!-- Contenido de la tarjeta -->
+                <div class="p-6 text-center">
+                    <h2 class="text-2xl font-semibold text-promart-orange mb-2">Cómo armar tu mueble</h2>
+                    <p class="text-gray-600 text-sm">Sigue nuestras guías paso a paso y disfruta tu nuevo espacio.</p>
+                </div>
+            </a>
+
+            <!-- Tarjeta de "Cuidado de Mueble" -->
+            <a href="#"
+                class="group bg-white rounded-2xl shadow-lg border-2 border-promart-orange overflow-hidden transform hover:-translate-y-2 hover:shadow-2xl transition-all duration-300">
+                <!-- Imagen del mueble para el cuidado -->
+                <img src="img/furniture_c.webp" alt="Cómo cuidar tu mueble"
+                    class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                <!-- Contenido de la tarjeta -->
+                <div class="p-6 text-center">
+                    <h2 class="text-2xl font-semibold text-promart-orange mb-2">Cómo cuidar tu mueble</h2>
+                    <p class="text-gray-600 text-sm">Mantén tu mueble como nuevo con tips de nuestros expertos.</p>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <!-- Sección de Llamada a la Acción (CTA) -->
+    <section class="bg-promart-orange text-white py-12 text-center">
+        <h2 class="text-3xl font-bold mb-4">¿Necesitas ayuda adicional?</h2>
+        <p class="mb-6 text-lg">Nuestro equipo de postventa está listo para atenderte.</p>
+        <!-- Botón de contacto -->
+        <a href="#"
+            class="bg-white text-promart-orange font-semibold px-6 py-3 rounded-full shadow hover:bg-gray-100 transition">
+            Contactar soporte
+        </a>
+    </section>
+
+    <script>
+        // Función para lanzar el efecto de confeti
+        function fireConfetti() {
+            // El confeti se lanza con 180 partículas, un ángulo de dispersión de 120 grados,
+            // y desde un origen un poco por debajo del centro vertical (y: 0.6)
+            confetti({ particleCount: 180, spread: 120, origin: { y: 0.6 } });
+        }
+        // Evento que dispara la función de confeti cuando la página ha cargado completamente
+        window.addEventListener('load', fireConfetti);
+    </script>
+
+</body>
+
+</html>
