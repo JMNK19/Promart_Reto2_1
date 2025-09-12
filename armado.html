@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Promart | Armado de Mueble</title>
+  <link rel="icon" type="image/webp" href="img/logo_pestania.webp" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    :root {
+      --promart-orange: #f26522;
+      --promart-light-bg: #f8f8f8;
+    }
+
+    .bg-promart-orange {
+      background-color: var(--promart-orange);
+    }
+
+    .text-promart-orange {
+      color: var(--promart-orange);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: white;
+    }
+
+    @keyframes fade-in-up {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in-up {
+      animation: fade-in-up .6s ease both;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  </style>
+</head>
+
+<body class="bg-white">
+
+  <!-- Hero -->
+  <header class="bg-gradient-to-r from-[#f26522] to-[#ff7a45] text-white p-8 md:p-14 text-center relative overflow-hidden">
+    <div class="max-w-4xl mx-auto relative z-10">
+      <img src="img/promart.webp" alt="Promart" class="h-20 sm:h-24 mx-auto mb-4 w-auto animate-fade-in-up">
+      <h1 class="text-3xl md:text-4xl font-extrabold drop-shadow-lg animate-fade-in-up">Guía: <span class="underline decoration-white/50">Armado de Mueble</span></h1>
+      <p class="mt-3 text-base md:text-lg text-white/90 animate-fade-in-up">Sigue estos pasos y el video para armar tu mueble de forma segura y sencilla.</p>
+
+      <!-- Botón Volver debajo del texto -->
+      <a href="index.html" class="inline-flex items-center gap-3 mt-6 bg-white/10 px-4 py-2 rounded-full hover:bg-white/20 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M12.293 16.293a1 1 0 010 1.414l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L8.414 11l5.293 5.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+        </svg>
+        <span class="text-sm font-medium">Volver</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-6 py-10">
+
+    <!-- Video embebido responsivo -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold text-promart-orange mb-4 text-center">Video paso a paso</h2>
+      <div class="video-wrapper mx-auto">
+        <iframe src="https://www.youtube.com/embed/4ZCuEFvaat8" title="Cómo armar un mueble" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <!-- Materiales y herramientas -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+      <div class="bg-white rounded-2xl p-6 shadow border border-gray-100 animate-fade-in-up">
+        <h3 class="text-xl font-semibold mb-3 text-promart-orange">Materiales</h3>
+        <ul class="text-gray-600 list-disc list-inside space-y-2">
+          <li>Melamina fresno europeo (18mm)</li>
+          <li>Tarugos de madera (3/8)</li>
+          <li>Ruedas de plástico (2”)</li>
+          <li>Tornillos de cabeza plana</li>
+          <li>Cemento de contacto</li>
+        </ul>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 shadow border border-gray-100 animate-fade-in-up">
+        <h3 class="text-xl font-semibold mb-3 text-promart-orange">Herramientas</h3>
+        <ul class="text-gray-600 list-disc list-inside space-y-2">
+          <li>Pistola de tornillos de 18V</li>
+          <li>Punta para pistola de tornillos PZ2</li>
+          <li>Broca de madera de 3mm</li>
+          <li>Broca de 10mm</li>
+          <li>Taladro</li>
+          <li>Cinta métrica</li>
+          <li>Nivel</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Pasos detallados -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold text-promart-orange mb-4">Pasos</h2>
+      <ol class="space-y-4 text-gray-700" id="pasos">
+        <!-- Primeros pasos visibles -->
+        <li class="bg-white p-4 rounded-lg shadow border border-gray-100"><strong>1. Organiza tu espacio:</strong><span class="block text-sm text-gray-600">Identifica las partes según la lista.</span></li>
+        <li class="bg-white p-4 rounded-lg shadow border border-gray-100"><strong>2. Une las piezas grandes:</strong><span class="block text-sm text-gray-600">Coloca los laterales y la parte trasera del mueble.</span></li>
+        <li class="bg-white p-4 rounded-lg shadow border border-gray-100"><strong>3. Añade las repisas:</strong><span class="block text-sm text-gray-600">Coloca cada repisa en su posición correcta.</span></li>
+
+        <!-- Pasos ocultos -->
+        <div id="pasos-extra" class="hidden">
+          <li class="bg-white p-4 rounded-lg shadow border border-gray-100"><strong>4. Añade el separador:</strong><span class="block text-sm text-gray-600">Inserta el separador central siguiendo las indicaciones.</span></li>
+          <li class="bg-white p-4 rounded-lg shadow border border-gray-100"><strong>5. Haz guías en la cubierta:</strong><span class="block text-sm text-gray-600">Usa un taladro con broca de 10mm para realizar los orificios.</span></li>
+          <li class="bg-white p-4 rounded-lg shadow border border-gray-100"><strong>6. Aplica cemento de contacto:</strong><span class="block text-sm text-gray-600">Inserta los tubos con la ayuda de un martillo de goma.</span></li>
+          <li class="bg-white p-4 rounded-lg shadow border border-gray-100"><strong>7. Une con tornillos:</strong><span class="block text-sm text-gray-600">Usa 3 tornillos para fijar la parte inferior.</span></li>
+          <li class="bg-white p-4 rounded-lg shadow border border-gray-100"><strong>8. Coloca la estructura:</strong><span class="block text-sm text-gray-600">Asegura la estructura a una altura de 75 cm.</span></li>
+          <li class="bg-white p-4 rounded-lg shadow border border-gray-100"><strong>9. Arma el cajón con ruedas:</strong><span class="block text-sm text-gray-600">Sigue las piezas indicadas en el video para construir el cajón.</span></li>
+          <li class="bg-white p-4 rounded-lg shadow border border-gray-100"><strong>10. Coloca las ruedas:</strong><span class="block text-sm text-gray-600">Fija las cuatro ruedas al cajón.</span></li>
+        </div>
+      </ol>
+
+      <!-- Botón Ver más -->
+      <div class="text-center mt-4">
+        <button id="verMasBtn" class="bg-promart-orange text-white font-semibold px-6 py-2 rounded-full shadow hover:brightness-95 transition">Ver más</button>
+      </div>
+    </section>
+
+    <!-- CTA de soporte -->
+    <section class="mb-12 text-center">
+      <a href="#" class="inline-block bg-promart-orange text-white font-semibold px-6 py-3 rounded-full shadow hover:brightness-95 transition">Descargar manual (PDF)</a>
+      <p class="mt-4 text-sm text-gray-500">¿Aún necesitas ayuda? Contacta a nuestro soporte para asistencia en horario laboral.</p>
+    </section>
+
+  </main>
+
+  <footer class="bg-promart-orange text-white py-8 text-center">
+    <div class="max-w-4xl mx-auto px-4">
+      <h3 class="text-xl font-bold">¿Todo listo?</h3>
+      <p class="mt-2 text-sm">Si terminaste el armado, comparte una foto y celebra con nosotros.</p>
+      <button id="celebrateBtn" class="mt-4 bg-white text-promart-orange font-semibold px-5 py-2 rounded-full shadow">Celebrar</button>
+    </div>
+  </footer>
+
+  <script>
+    // Confeti
+    document.getElementById('celebrateBtn').addEventListener('click', function () {
+      confetti({ particleCount: 220, spread: 140, origin: { y: 0.6 } });
+    });
+
+    // Mostrar pasos extra
+    document.getElementById('verMasBtn').addEventListener('click', function () {
+      const pasosExtra = document.getElementById('pasos-extra');
+      if (pasosExtra.classList.contains('hidden')) {
+        pasosExtra.classList.remove('hidden');
+        this.textContent = "Ver menos";
+      } else {
+        pasosExtra.classList.add('hidden');
+        this.textContent = "Ver más";
+      }
+    });
+  </script>
+
+</body>
+</html>
+
+
+
