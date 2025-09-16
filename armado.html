@@ -160,14 +160,66 @@
       <a href="https://drive.google.com/file/d/1lPTsquY41cguTXetvk_-LFGAqkmpdM5K/view" 
          target="_blank" rel="noopener noreferrer"
          class="flex-1 bg-promart-orange text-white font-semibold px-6 py-3 rounded-full shadow hover:brightness-95 transition">
-        📄 Descargar manual (PDF)
-      </a>
+        Descargar manual (PDF)
+    </a>
+    
+    <!-- Botón Audio -->
+    <button
+  id="showAudioBtn"
+  class="group relative inline-flex items-center justify-center overflow-hidden rounded-full p-[2px] font-semibold text-gray-800 shadow-md transition-all hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+>
+  <span
+    class="absolute inset-0 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500"
+    aria-hidden="true"
+  ></span>
 
-      <!-- Botón Audio -->
-      <button id="showAudioBtn" 
-              class="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-[#6a82fb] to-[#f26522] text-white font-semibold px-6 py-3 rounded-full shadow hover:brightness-110 transition">
-        🔊 Audio por IA
-      </button>
+  <span
+    class="relative flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 transition-all group-hover:bg-opacity-90"
+  >
+    <svg
+      id="playIcon"
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="url(#icon-gradient)"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <defs>
+        <linearGradient id="icon-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color: #22d3ee" />
+          <stop offset="50%" style="stop-color: #a855f7" />
+          <stop offset="100%" style="stop-color: #ec4899" />
+        </linearGradient>
+      </defs>
+      <path
+        d="M12 3L9.5 8.5L4 11L9.5 13.5L12 19L14.5 13.5L20 11L14.5 8.5L12 3Z"
+      />
+    </svg>
+
+    <svg
+      id="pauseIcon"
+      class="hidden"
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <rect x="6" y="4" width="4" height="16"></rect>
+      <rect x="14" y="4" width="4" height="16"></rect>
+    </svg>
+
+    <span id="audioBtnText">Audio por IA</span>
+  </span>
+</button>
     </div>
 
     <!-- Reproductor de audio oculto -->
@@ -225,7 +277,65 @@
         // document.getElementById('audioManual').pause();
       }
     });
+    
   </script>
+
+  <script>
+  // --- Control de reproducción del audio IA (Versión adaptada) ---
+
+  // Elementos del DOM
+  const showAudioBtn = document.getElementById('showAudioBtn');
+  const audioContainer = document.getElementById('audioContainer');
+  const audioManual = document.getElementById('audioManual');
+  
+  // Elementos específicos dentro del botón
+  const audioBtnText = document.getElementById('audioBtnText'); // <-- El span del texto
+  const playIcon = document.getElementById('playIcon');         // <-- El ícono de "IA"
+  const pauseIcon = document.getElementById('pauseIcon');       // <-- El ícono de "Pausa"
+
+  let isPlaying = false;
+
+  // Función para actualizar el estado del botón a "Play"
+  function setPlayState() {
+    audioBtnText.textContent = "Audio por IA";
+    playIcon.classList.remove('hidden'); // Muestra el ícono de play
+    pauseIcon.classList.add('hidden');   // Oculta el ícono de pausa
+    isPlaying = false;
+  }
+
+  // Función para actualizar el estado del botón a "Pause"
+  function setPauseState() {
+    audioBtnText.textContent = "Pausar audio";
+    playIcon.classList.add('hidden');     // Oculta el ícono de play
+    pauseIcon.classList.remove('hidden'); // Muestra el ícono de pausa
+    isPlaying = true;
+  }
+
+  // Evento principal al hacer clic en el botón
+  showAudioBtn.addEventListener('click', function () {
+    if (!isPlaying) {
+      // Si no se está reproduciendo: reproducir y cambiar a estado de pausa
+      audioContainer.classList.remove('hidden');
+      audioManual.play();
+      setPauseState();
+    } else {
+      // Si se está reproduciendo: pausar y cambiar a estado de play
+      audioManual.pause();
+      setPlayState();
+      // Opcional: si quieres que el reproductor se oculte al pausar manualmente
+      // audioContainer.classList.add('hidden'); 
+    }
+  });
+
+  // Evento para cuando el audio termina por sí solo
+  audioManual.addEventListener('ended', function () {
+    audioContainer.classList.add('hidden'); // Oculta el reproductor
+    setPlayState(); // Restablece el botón a su estado inicial
+  });
+</script>
+
+
+  
 
 </body>
 </html>
