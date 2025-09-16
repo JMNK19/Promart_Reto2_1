@@ -146,11 +146,44 @@
       </div>
     </section>
 
-    <!-- CTA de soporte -->
-    <section class="mb-12 text-center">
-      <a href="#" class="inline-block bg-promart-orange text-white font-semibold px-6 py-3 rounded-full shadow hover:brightness-95 transition">Descargar manual (PDF)</a>
-      <p class="mt-4 text-sm text-gray-500">¿Aún necesitas ayuda? Contacta a nuestro soporte para asistencia en horario laboral.</p>
-    </section>
+    <!-- CTA de soporte mejorado -->
+<section class="mb-12 flex justify-center">
+  <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 max-w-lg w-full text-center">
+    <h3 class="text-xl font-bold text-promart-orange mb-2">Guías disponibles</h3>
+    <p class="text-gray-600 text-sm mb-6">
+      Elige la forma que prefieras para seguir las instrucciones de armado: 
+      descarga el manual en PDF o escucha la versión en audio.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <!-- Botón PDF -->
+      <a href="https://drive.google.com/file/d/1lPTsquY41cguTXetvk_-LFGAqkmpdM5K/view" 
+         target="_blank" rel="noopener noreferrer"
+         class="flex-1 bg-promart-orange text-white font-semibold px-6 py-3 rounded-full shadow hover:brightness-95 transition">
+        📄 Descargar manual (PDF)
+      </a>
+
+      <!-- Botón Audio -->
+      <button id="showAudioBtn" 
+              class="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-[#6a82fb] to-[#f26522] text-white font-semibold px-6 py-3 rounded-full shadow hover:brightness-110 transition">
+        🔊 Audio por IA
+      </button>
+    </div>
+
+    <!-- Reproductor de audio oculto -->
+    <div id="audioContainer" class="hidden mt-4">
+      <audio id="audioManual" class="rounded-lg shadow border-2 border-[#6a82fb] w-full max-w-xs mx-auto" controls>
+        <source src="sounds/manual_ia.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+      </audio>
+    </div>
+
+    <p class="mt-6 text-xs text-gray-500">
+      ¿Aún necesitas ayuda? Contacta a nuestro soporte para asistencia en horario laboral.
+    </p>
+  </div>
+</section>
+
 
   </main>
 
@@ -177,6 +210,19 @@
       } else {
         pasosExtra.classList.add('hidden');
         this.textContent = "Ver más";
+      }
+    });
+
+    // Mostrar controles de audio IA al presionar el botón
+    document.getElementById('showAudioBtn').addEventListener('click', function () {
+      const audioContainer = document.getElementById('audioContainer');
+      if (audioContainer.classList.contains('hidden')) {
+        audioContainer.classList.remove('hidden');
+        // Opcional: reproducir automáticamente al mostrar
+        // document.getElementById('audioManual').play();
+      } else {
+        audioContainer.classList.add('hidden');
+        // document.getElementById('audioManual').pause();
       }
     });
   </script>
